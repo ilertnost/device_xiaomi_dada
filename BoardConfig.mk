@@ -31,3 +31,5 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Include the proprietary files BoardConfig.
 include vendor/xiaomi/dada/BoardConfigVendor.mk
+
+BOARD_KERNEL_CMDLINE += kasan=off
