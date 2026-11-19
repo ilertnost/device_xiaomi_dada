@@ -25,6 +25,14 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from dada device
 $(call inherit-product, device/xiaomi/dada/device.mk)
 
+# The APEX-Foundry kernel enables CONFIG_SYSVIPC (needed by the container
+# patches in the v1.4 port). Kernel FCM 202404 requires it to be off, which
+# makes ota_from_target_files refuse to package the build:
+#   No compatible kernel requirement found (kernel FCM version = 202404)
+# Keep the feature and skip the kernel requirement check, as the emulator and
+# trusty products do.
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+
 PRODUCT_NAME := lineage_dada
 PRODUCT_DEVICE := dada
 PRODUCT_MANUFACTURER := Xiaomi
