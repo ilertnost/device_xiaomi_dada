@@ -6,6 +6,9 @@
 # Inherit from sm8750-common
 $(call inherit-product, device/xiaomi/sm8750-common/common.mk)
 
+# Dolby
+$(call inherit-product, hardware/dolby/dolby.mk)
+
 # Camera
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-miuicamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-miuicamera.xml
