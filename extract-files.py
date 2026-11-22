@@ -282,6 +282,13 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libkeymaster_portable_prebuilt.so',
         'vendor/lib64/libsoft_attestation_cert_prebuilt.so',
     ): xiaomi_keymaster_fixup(),
+    # The display feature blobs parse XML with the pre-Android 16 tinyxml2
+    # layout; keep them on the frozen library used by the other stock blobs.
+    (
+        'odm/lib64/hw/displayfeature.default.so',
+        'odm/lib64/libmiXmlParser.so',
+    ): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
